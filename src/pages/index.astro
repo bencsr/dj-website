@@ -38,13 +38,37 @@ const youtube = "https://www.youtube.com/@bencsr";
       </section>
 
       <section class="content">
-        <div>
+        <div class="services">
           <h2>Szolgáltatások</h2>
-          <p>
-            DJ fellépés esküvőkre, céges rendezvényekre, születésnapokra és
-            kisebb privát eseményekre. A zenei irányt mindig az eseményhez és a
-            közönséghez igazítom.
-          </p>
+
+          <div class="service-list">
+            <article class="service-card">
+              <h3>DJ szolgáltatás</h3>
+              <p>
+                Céges rendezvények, esküvők, bálok és privát bulik zenei
+                lebonyolítása. A cél mindig az, hogy az esemény hangulatához,
+                közönségéhez és menetéhez illeszkedjen a zene.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <h3>Rendezvények hangosítása</h3>
+              <p>
+                Hangosítás kisebb és közepes rendezvényekhez, például
+                táncversenyekhez, sportnapokhoz, beszédekhez és háttérzenés
+                eseményekhez.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <h3>Zenei összeállítások készítése</h3>
+              <p>
+                Egyedi mixek, vágott zenei alapok és összeállítások
+                fellépésekhez, műsorokhoz, bevonulásokhoz vagy különleges
+                produkciókhoz.
+              </p>
+            </article>
+          </div>
         </div>
 
         <div>
@@ -188,6 +212,29 @@ const youtube = "https://www.youtube.com/@bencsr";
     color: #444;
     font-size: 1.05rem;
     line-height: 1.7;
+  }
+
+  .services {
+    display: grid;
+    gap: 22px;
+  }
+
+  .service-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .service-card {
+    padding: 22px;
+    border: 1px solid #eaeaea;
+    border-radius: 24px;
+    background: #fff;
+  }
+
+  .service-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
   }
 
   .contact {
