@@ -5,6 +5,40 @@ const phone = "+36-30/548-1026";
 const phoneHref = "+36305481026";
 const messenger = "https://www.messenger.com/t/bencsr";
 const youtube = "https://www.youtube.com/@bencsr";
+
+const youtubeMixes = [
+  { title: "A 90-es évek legjobb magyar zenéi", url: "https://www.youtube.com/watch?v=6Fjo4M2vSdc" },
+  { title: "Winter Melodic Journey", url: "https://www.youtube.com/watch?v=SK69dqVc88w" },
+  { title: "70s 80s 90s CLASSIC HITS REBORN", url: "https://www.youtube.com/watch?v=Ooj35_IA9iA" },
+];
+
+const getYouTubeId = (url: string) => {
+  if (!url) return "";
+
+  try {
+    const parsedUrl = new URL(url);
+
+    if (parsedUrl.hostname.includes("youtu.be")) {
+      return parsedUrl.pathname.replace("/", "");
+    }
+
+    if (parsedUrl.pathname.includes("/embed/")) {
+      return parsedUrl.pathname.split("/embed/")[1]?.split("/")[0] ?? "";
+    }
+
+    if (parsedUrl.pathname.includes("/shorts/")) {
+      return parsedUrl.pathname.split("/shorts/")[1]?.split("/")[0] ?? "";
+    }
+
+    return parsedUrl.searchParams.get("v") ?? "";
+  } catch {
+    return url;
+  }
+};
+
+const mixes = youtubeMixes
+  .map((mix) => ({ ...mix, id: getYouTubeId(mix.url) }))
+  .filter((mix) => mix.id);
 ---
 
 <!doctype html>
@@ -127,6 +161,28 @@ const youtube = "https://www.youtube.com/@bencsr";
           </ul>
         </div>
       </section>
+
+      {
+        mixes.length > 0 && (
+          <section class="mixes" aria-labelledby="mixes-title">
+            <h2 id="mixes-title">Mixek</h2>
+
+            <div class="mix-list">
+              {mixes.map((mix) => (
+                <article class="mix-card">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${mix.id}`}
+                    title={`${mix.title} YouTube lejátszó`}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  />
+                </article>
+              ))}
+            </div>
+          </section>
+        )
+      }
     </main>
   </body>
 </html>
@@ -344,6 +400,31 @@ const youtube = "https://www.youtube.com/@bencsr";
     flex: 0 0 auto;
     stroke-linecap: round;
     stroke-linejoin: round;
+  }
+
+  .mixes {
+    padding: 12px 0 0;
+  }
+
+  .mix-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(198px, 0.9fr));
+    gap: 14px;
+  }
+
+  .mix-card {
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    background: #f7f7f7;
+  }
+
+  .mix-card iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 
   @media (max-width: 720px) {
