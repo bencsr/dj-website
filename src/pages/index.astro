@@ -46,25 +46,23 @@ const mixes = youtubeMixes
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{name} | DJ szolgáltatás rendezvényekre</title>
+    <title>DJ Miskolc | Esküvői és rendezvény DJ – {name}</title>
     <meta
       name="description"
-      content="DJ szolgáltatás esküvőkre, céges rendezvényekre, születésnapokra és privát eseményekre."
+      content="DJ szolgáltatás és rendezvényhangosítás Miskolcon és környékén, esküvőkre, céges rendezvényekre, bálokra és privát eseményekre. Kérj ajánlatot!"
     />
   </head>
 
   <body>
     <main class="page">
       <section class="hero">
-		<h1>
-		 Hangulat<br /> 
-		 Ritmus<br />
-         Precíz szervezés
-		</h1>
+        <h1>DJ és rendezvényhangosítás Miskolcon</h1>
 
-		<p class="lead">
-		DJ szolgáltatás és hangosítás rendezvényekhez —	a háttérzenétől a telt tánctérig.
-		</p>
+        <p class="lead">
+          Esküvők, céges rendezvények, bálok és privát bulik zenei
+          lebonyolítása Miskolcon és a környéken — a háttérzenétől a telt
+          tánctérig.
+        </p>
       </section>
 
       <section class="content">
@@ -162,6 +160,17 @@ const mixes = youtubeMixes
         </div>
       </section>
 
+      <section class="service-area" aria-labelledby="service-area-title">
+        <h2 id="service-area-title">Szolgáltatási terület</h2>
+        <p>
+          Elsősorban Miskolcon és környékén, a várostól nagyjából 1,5 órás autóúton
+          belül vállalok rendezvényeket. Szívesen dolgozom többek között
+          Kazincbarcikán, Ózdon, Tiszaújvárosban, Mezőkövesden, Egerben, Debrecenben, Nyíeregyházán,
+          Szerencsen, Tokajban, Sárospatakon és a környező településeken. 
+          Egyedi megbeszélés alapján távolabbi helyszínek sem jelentenek akadályt.
+        </p>
+      </section>
+
       {
         mixes.length > 0 && (
           <section class="mixes" aria-labelledby="mixes-title">
@@ -247,6 +256,14 @@ const mixes = youtubeMixes
     font-size: clamp(1rem, 2vw, 1.3rem);
     line-height: 1.45;
     color: #333;
+  }
+
+  .tagline {
+    margin: 22px 0 0;
+    color: var(--color-deep-blue);
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 650;
+    letter-spacing: -0.02em;
   }
 
   .actions {
@@ -404,6 +421,19 @@ const mixes = youtubeMixes
 
   .mixes {
     padding: 12px 0 0;
+  }
+
+  .service-area {
+    padding: 20px 0 36px;
+    border-top: 1px solid #eaeaea;
+  }
+
+  .service-area p {
+    max-width: 760px;
+    margin: 0;
+    color: #444;
+    font-size: 1.05rem;
+    line-height: 1.7;
   }
 
   .mix-list {
