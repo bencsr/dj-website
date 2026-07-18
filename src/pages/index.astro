@@ -101,6 +101,9 @@ const mixes = youtubeMixes
 
         <div>
           <h2>Kapcsolat</h2>
+          <p class="contact-intro">
+            Ha felkeltettem az érdeklődésedet, keress bizalommal bármelyik elérhetőségemen!
+          </p>
           <ul class="contact">
             <li>
               <a class="contact-link" href={`mailto:${email}`} aria-label={`Email: ${email}`}>
@@ -165,7 +168,7 @@ const mixes = youtubeMixes
         <p>
           Elsősorban Miskolcon és környékén, a várostól nagyjából 1,5 órás autóúton
           belül vállalok rendezvényeket. Szívesen dolgozom többek között
-          Kazincbarcikán, Ózdon, Tiszaújvárosban, Mezőkövesden, Egerben, Debrecenben, Nyíeregyházán,
+          Kazincbarcikán, Ózdon, Tiszaújvárosban, Mezőkövesden, Egerben, Debrecenben, Nyíregyházán,
           Szerencsen, Tokajban, Sárospatakon és a környező településeken. 
           Egyedi megbeszélés alapján távolabbi helyszínek sem jelentenek akadályt.
         </p>
@@ -175,6 +178,9 @@ const mixes = youtubeMixes
         mixes.length > 0 && (
           <section class="mixes" aria-labelledby="mixes-title">
             <h2 id="mixes-title">Mixek</h2>
+            <p class="mix-intro">
+              Hallgass bele a mixeimbe a <a href="https://www.youtube.com/@bencsr">YouTube csatornámon</a>, és találd meg köztük a következő rendezvényed hangulatát!
+            </p>
 
             <div class="mix-list">
               {mixes.map((mix) => (
@@ -358,6 +364,13 @@ const mixes = youtubeMixes
     gap: 14px;
   }
 
+  .content .contact-intro {
+    margin: 0 0 20px;
+    color: #444;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
   .contact li {
     margin: 0;
   }
@@ -423,13 +436,19 @@ const mixes = youtubeMixes
     padding: 12px 0 0;
   }
 
+  .mix-intro {
+    margin: 0 0 20px;
+    color: #444;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
   .service-area {
     padding: 20px 0 36px;
     border-top: 1px solid #eaeaea;
   }
 
   .service-area p {
-    max-width: 760px;
     margin: 0;
     color: #444;
     font-size: 1.05rem;
