@@ -46,7 +46,7 @@ const mixes = youtubeMixes
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DJ Miskolc | Esküvői és rendezvény DJ – {name}</title>
+    <title>DJ Bencs | DJ és rendezvényhangosítás Miskolcon</title>
     <meta
       name="description"
       content="DJ szolgáltatás és rendezvényhangosítás Miskolcon és környékén, esküvőkre, céges rendezvényekre, bálokra és privát eseményekre. Kérj ajánlatot!"
@@ -64,46 +64,110 @@ const mixes = youtubeMixes
         </div>
       </section>
 
-      <section class="content">
-        <div class="services">
-          <h2>Szolgáltatások</h2>
-
-          <div class="service-list">
-            <article class="service-card">
-              <h3>DJ szolgáltatás</h3>
-              <p>
-                Céges rendezvények, esküvők, bálok és privát bulik zenei
-                lebonyolítása. A cél mindig az, hogy az esemény hangulatához,
-                közönségéhez és menetéhez illeszkedjen a zene.
-              </p>
-            </article>
-
-            <article class="service-card">
-              <h3>Rendezvények hangosítása</h3>
-              <p>
-                Hangosítás kisebb és közepes rendezvényekhez, például
-                táncversenyekhez, sportnapokhoz, beszédekhez és háttérzenés
-                eseményekhez.
-              </p>
-            </article>
-
-            <article class="service-card">
-              <h3>Zenei összeállítások készítése</h3>
-              <p>
-                Egyedi mixek, vágott zenei alapok és összeállítások
-                fellépésekhez, műsorokhoz, bevonulásokhoz vagy különleges
-                produkciókhoz.
-              </p>
-            </article>
-          </div>
+      <section class="service-card" aria-labelledby="dj-service-title">
+        <div class="service-thumbnails">
+          <a class="service-thumbnail" href="/images/djb01.jpg">
+            <img
+              src="/images/djb01.jpg"
+              alt="DJ Bencs a keverőpult mögött"
+              width="1920"
+              height="1440"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <a class="service-thumbnail" href="/images/djb02.jpg">
+            <img
+              src="/images/djb02.jpg"
+              alt="Telt tánctér egy céges rendezvényen Németországban"
+              width="1920"
+              height="1440"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <a class="service-thumbnail" href="/images/djb03.jpg">
+            <img
+              class="service-thumbnail-portrait"
+              src="/images/djb03.jpg"
+              alt="Bál"
+              width="1440"
+              height="1920"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <a class="service-thumbnail" href="/images/djb04.jpg">
+            <img
+              src="/images/djb04.jpg"
+              alt="Szilveszteri buli"
+              width="1920"
+              height="1440"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
         </div>
-
-        <div>
-          <h2>Kapcsolat</h2>
-          <p class="contact-intro">
-            Ha felkeltettem az érdeklődésedet, keress bizalommal bármelyik elérhetőségemen!
+        <div class="service-copy">
+          <h2 id="dj-service-title">DJ szolgáltatás</h2>
+          <p>
+            Céges rendezvények, esküvők, bálok és privát bulik zenei
+            lebonyolítása. A cél mindig az, hogy az esemény hangulatához,
+            közönségéhez és menetéhez illeszkedjen a zene.
           </p>
-          <ul class="contact">
+        </div>
+      </section>
+
+      <section class="service-card" aria-labelledby="sound-service-title">
+        <div class="service-thumbnails">
+          <a class="service-thumbnail" href="/images/djb05.jpg">
+            <img
+              src="/images/djb05.jpg"
+              alt="Akrobatikus rock&roll tánverseny hangosítása sportcsarnokban"
+              width="1920"
+              height="1440"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <a class="service-thumbnail" href="/images/djb06.jpg">
+            <img
+              src="/images/djb06.jpg"
+              alt="Óvodai rendezvény hangosítása"
+              width="2048"
+              height="1536"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        </div>
+        <div class="service-copy">
+          <h2 id="sound-service-title">Rendezvények hangosítása</h2>
+          <p>
+            Hangosítás kisebb és közepes rendezvényekhez, például
+            táncversenyekhez, sportnapokhoz, beszédekhez és háttérzenés
+            eseményekhez.
+          </p>
+        </div>
+      </section>
+
+      <section class="service-card" aria-labelledby="music-editing-title">
+        <div class="service-copy">
+          <h2 id="music-editing-title">Zenei összeállítások készítése</h2>
+          <p>
+            Egyedi mixek, vágott zenei alapok és összeállítások
+            fellépésekhez, műsorokhoz, bevonulásokhoz vagy különleges
+            produkciókhoz.
+          </p>
+        </div>
+      </section>
+
+      <section class="contact-section" aria-labelledby="contact-title">
+        <h2 id="contact-title">Kapcsolat</h2>
+        <p class="contact-intro">
+          Ha felkeltettem az érdeklődésedet, keress bizalommal bármelyik elérhetőségemen!
+        </p>
+        <ul class="contact">
             <li>
               <a class="contact-link" href={`mailto:${email}`} aria-label={`Email: ${email}`}>
                 <span class="contact-icon" aria-hidden="true">
@@ -158,8 +222,7 @@ const mixes = youtubeMixes
                 <span>Miskolc</span>
               </span>
             </li>
-          </ul>
-        </div>
+        </ul>
       </section>
 
       <section class="service-area" aria-labelledby="service-area-title">
@@ -331,48 +394,84 @@ const mixes = youtubeMixes
     border-color: #111;
   }
 
-  .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px;
-    padding: 36px 0 24px;
-  }
-
   h2 {
-    margin: 0 0 16px;
+    margin: 0 0 8px;
     font-size: 1rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
-  .content p {
+  .service-card p,
+  .contact-section p {
     margin: 0;
     color: #444;
     font-size: 1.05rem;
     line-height: 1.7;
   }
 
-  .services {
-    display: grid;
-    gap: 0;
-  }
-
-  .service-list {
-    display: grid;
-    gap: 16px;
-  }
-
   .service-card {
-    padding: 22px;
-    border: 1px solid #eaeaea;
-    border-radius: 24px;
-    background: #fff;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
-  .service-card h3 {
-    margin: 0 0 10px;
-    font-size: 1.15rem;
-    letter-spacing: -0.02em;
+  .hero + .service-card {
+    margin-top: 36px;
+  }
+
+  .service-card + .service-card {
+    margin-top: 32px;
+  }
+
+  .service-thumbnails {
+    display: grid;
+    grid-column: 2;
+    grid-row: 1;
+    grid-auto-flow: column;
+    grid-auto-columns: 112px;
+    justify-content: end;
+    gap: 12px;
+  }
+
+  .service-thumbnail {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    background: #f7f7f7;
+    color: #888;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+
+  .service-thumbnail img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .service-thumbnail-portrait {
+    object-position: center 42%;
+  }
+
+  .service-copy {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .contact-section {
+    padding: 24px 0;
   }
 
   .contact {
@@ -383,7 +482,7 @@ const mixes = youtubeMixes
     gap: 14px;
   }
 
-  .content .contact-intro {
+  .contact-section .contact-intro {
     margin: 0 0 20px;
     color: #444;
     font-size: 1.05rem;
@@ -514,10 +613,28 @@ const mixes = youtubeMixes
       height: 60px;
     }
 
-    .content {
+    .service-card {
       grid-template-columns: 1fr;
-      gap: 40px;
-      padding-top: 32px;
+      gap: 16px;
+    }
+
+    .service-copy {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .service-thumbnails {
+      grid-column: 1;
+      grid-row: 2;
+      grid-template-columns: repeat(auto-fit, minmax(88px, 112px));
+      grid-auto-flow: row;
+      grid-auto-columns: auto;
+      justify-content: start;
+      width: 100%;
+    }
+
+    .hero + .service-card {
+      margin-top: 32px;
     }
 
     .button {
