@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="18.5 8.5 62.5 80" role="img" aria-labelledby="title desc">
+  <title id="title">BR monogram</title>
+  <desc id="desc">Egymásba kapcsolódó B és R betűkből kialakított geometrikus embléma.</desc>
+  <g fill="none" stroke="#B08D3F" stroke-width="6" stroke-linecap="square" stroke-linejoin="round">
+    <path d="M22 12v72"/>
+    <path d="M22 12h25c14 0 23 7 23 18s-9 18-23 18H22"/>
+    <path d="M22 48h27c15 0 25 7 25 18s-10 18-25 18H22"/>
+    <path d="M47 48l29 36"/>
+  </g>
+</svg>
