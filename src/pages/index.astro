@@ -261,6 +261,77 @@ const mixes = youtubeMixes
         )
       }
     </main>
+
+    <dialog class="lightbox" aria-label="Képgaléria">
+      <div class="lightbox-content">
+        <img class="lightbox-image" src="" alt="" />
+        <button class="lightbox-close" type="button" aria-label="Kép bezárása">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <button class="lightbox-nav lightbox-previous" type="button" aria-label="Előző kép">
+          <svg aria-hidden="true" width="18" height="28" viewBox="0 0 18 28" fill="none">
+            <path d="M15 3 4 14l11 11" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+        <button class="lightbox-nav lightbox-next" type="button" aria-label="Következő kép">
+          <svg aria-hidden="true" width="18" height="28" viewBox="0 0 18 28" fill="none">
+            <path d="m3 3 11 11L3 25" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </div>
+    </dialog>
+
+    <script>
+      const galleryLinks = Array.from(
+        document.querySelectorAll<HTMLAnchorElement>(".service-thumbnail"),
+      );
+      const lightbox = document.querySelector<HTMLDialogElement>(".lightbox");
+      const lightboxImage = document.querySelector<HTMLImageElement>(".lightbox-image");
+      const closeButton = document.querySelector<HTMLButtonElement>(".lightbox-close");
+      const previousButton = document.querySelector<HTMLButtonElement>(".lightbox-previous");
+      const nextButton = document.querySelector<HTMLButtonElement>(".lightbox-next");
+      let currentImageIndex = 0;
+
+      const showImage = (index: number) => {
+        if (!lightboxImage || galleryLinks.length === 0) return;
+
+        currentImageIndex = (index + galleryLinks.length) % galleryLinks.length;
+        const link = galleryLinks[currentImageIndex];
+        const thumbnail = link.querySelector("img");
+
+        lightboxImage.src = link.href;
+        lightboxImage.alt = thumbnail?.alt ?? "Galériakép";
+      };
+
+      galleryLinks.forEach((link, index) => {
+        link.addEventListener("click", (event) => {
+          if (!lightbox || !lightboxImage) return;
+
+          event.preventDefault();
+          showImage(index);
+          lightbox.showModal();
+          document.body.classList.add("lightbox-open");
+        });
+      });
+
+      closeButton?.addEventListener("click", () => lightbox?.close());
+      previousButton?.addEventListener("click", () => showImage(currentImageIndex - 1));
+      nextButton?.addEventListener("click", () => showImage(currentImageIndex + 1));
+
+      lightbox?.addEventListener("click", (event) => {
+        if (event.target === lightbox) lightbox.close();
+      });
+
+      lightbox?.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") showImage(currentImageIndex - 1);
+        if (event.key === "ArrowRight") showImage(currentImageIndex + 1);
+      });
+
+      lightbox?.addEventListener("close", () => {
+        document.body.classList.remove("lightbox-open");
+        if (lightboxImage) lightboxImage.src = "";
+      });
+    </script>
   </body>
 </html>
 
@@ -283,6 +354,10 @@ const mixes = youtubeMixes
     margin: 0;
     background: #fff;
     color: #111;
+  }
+
+  body.lightbox-open {
+    overflow: hidden;
   }
 
   a {
@@ -452,6 +527,16 @@ const mixes = youtubeMixes
     font-size: 0.85rem;
     letter-spacing: 0.04em;
     text-decoration: none;
+    cursor: zoom-in;
+    transition:
+      border-color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .service-thumbnail:hover,
+  .service-thumbnail:focus-visible {
+    border-color: #999;
+    transform: translateY(-2px);
   }
 
   .service-thumbnail img {
@@ -463,6 +548,90 @@ const mixes = youtubeMixes
 
   .service-thumbnail-portrait {
     object-position: center 42%;
+  }
+
+  .lightbox {
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    background: transparent;
+  }
+
+  .lightbox[open] {
+    display: grid;
+    place-items: center;
+  }
+
+  .lightbox::backdrop {
+    background: rgb(0 0 0 / 82%);
+  }
+
+  .lightbox-content {
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+
+  .lightbox-image {
+    display: block;
+    width: auto;
+    max-width: calc(100vw - 96px);
+    height: auto;
+    max-height: calc(100vh - 64px);
+    border-radius: 6px;
+    box-shadow: 0 16px 64px rgb(0 0 0 / 45%);
+  }
+
+  .lightbox-close,
+  .lightbox-nav {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgb(0 0 0 / 58%);
+    color: #fff;
+    cursor: pointer;
+    transition: background 160ms ease;
+  }
+
+  .lightbox-close:hover,
+  .lightbox-close:focus-visible,
+  .lightbox-nav:hover,
+  .lightbox-nav:focus-visible {
+    background: rgb(0 0 0 / 85%);
+  }
+
+  .lightbox-close {
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .lightbox-nav {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .lightbox-nav svg {
+    display: block;
+  }
+
+  .lightbox-previous {
+    left: 10px;
+  }
+
+  .lightbox-next {
+    right: 10px;
   }
 
   .service-copy {
@@ -639,6 +808,24 @@ const mixes = youtubeMixes
 
     .button {
       width: 100%;
+    }
+
+    .lightbox-image {
+      max-width: calc(100vw - 24px);
+      max-height: calc(100vh - 24px);
+    }
+
+    .lightbox-close {
+      top: 8px;
+      right: 8px;
+    }
+
+    .lightbox-previous {
+      left: 8px;
+    }
+
+    .lightbox-next {
+      right: 8px;
     }
   }
 
